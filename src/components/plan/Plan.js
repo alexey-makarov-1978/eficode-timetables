@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Itinerary from "../itinerary/Itinerary";
 
 const Plan = ({ data }) => {
@@ -9,6 +10,10 @@ const Plan = ({ data }) => {
       ))}
     </div>
   );
+};
+
+Plan.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default Plan;

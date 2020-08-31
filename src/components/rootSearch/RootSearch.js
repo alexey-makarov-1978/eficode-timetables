@@ -1,49 +1,24 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+
+import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
-import Button from "@material-ui/core/Button";
+
 import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 import IconButton from "@material-ui/core/IconButton";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import ImportExportIcon from "@material-ui/icons/ImportExport";
-import Grid from "@material-ui/core/Grid";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-
-const useStyles = makeStyles({
-  root: {
-    backgroundColor: "pink",
-    flexGrow: 1,
-    padding: 2,
-  },
-  header: {
-    textAlign: "left",
-  },
-  search: {
-    textTransform: "none",
-    display: "inline",
-  },
-});
 
 const RootSearch = ({ onSearch, handleInputChange, locations }) => {
   const classes = useStyles();
-
-  // handcoded value of office location (as per task requirement)
-  const defValue = {
-    label: "Pohjoinen Rautatiekatu 25, Helsinki",
-    lat: 60.169453,
-    lon: 24.926041,
-  };
-
-  // empty value used when nothing is selected
-  const emptyValue = {
-    label: "",
-    lat: 0,
-    lon: 0,
-  };
 
   // identifies what direction is disabled (origin or destination)
   const [direction, changeDirection] = useState(true);
@@ -136,6 +111,7 @@ const RootSearch = ({ onSearch, handleInputChange, locations }) => {
       </CardContent>
       <CardActions className={classes.search}>
         <Button
+          id="searchButton"
           variant="contained"
           color="primary"
           endIcon={<LocationSearchingIcon />}
@@ -148,6 +124,41 @@ const RootSearch = ({ onSearch, handleInputChange, locations }) => {
       </CardActions>
     </Card>
   );
+};
+
+// handcoded value of office location (as per task requirement)
+const defValue = {
+  label: "Pohjoinen Rautatiekatu 25, Helsinki",
+  lat: 60.169453,
+  lon: 24.926041,
+};
+
+// empty value used when nothing is selected
+const emptyValue = {
+  label: "",
+  lat: 0,
+  lon: 0,
+};
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "pink",
+    flexGrow: 1,
+    padding: 2,
+  },
+  header: {
+    textAlign: "left",
+  },
+  search: {
+    textTransform: "none",
+    display: "inline",
+  },
+});
+
+RootSearch.propTypes = {
+  locations: PropTypes.array.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
 };
 
 export default RootSearch;

@@ -8,12 +8,6 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Alert from "@material-ui/lab/Alert";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 400,
-  },
-});
-
 function App() {
   const classes = useStyles();
 
@@ -123,5 +117,11 @@ function App() {
     </Box>
   );
 }
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 400,
+  },
+});
 
 export default App;

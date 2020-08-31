@@ -1,24 +1,16 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
-
+import PropTypes from "prop-types";
 import Leg from "../leg/Leg";
 import { getTime, getDuration } from "../utils/utils";
 
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
-const useStyles = makeStyles((theme) => ({
-  grid: {
-    maxWidth: "100%",
-    flexGrow: 1,
-    padding: 2,
-  },
-}));
 
 const Itinerary = ({ data }) => {
   const classes = useStyles();
@@ -57,6 +49,18 @@ const Itinerary = ({ data }) => {
       </Accordion>
     </div>
   );
+};
+
+const useStyles = makeStyles((theme) => ({
+  grid: {
+    maxWidth: "100%",
+    flexGrow: 1,
+    padding: 2,
+  },
+}));
+
+Itinerary.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default Itinerary;
